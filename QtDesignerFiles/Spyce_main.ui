@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1083</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>true</bool>
+      </property>
+      <property name="movable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="Untitled">
+       <attribute name="title">
+        <string>Untitled</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1083</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_as"/>
+    <addaction name="separator"/>
+    <addaction name="actionPrint"/>
+    <addaction name="actionPrint_hierarchy"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <widget class="QMenu" name="menuAdd">
+     <property name="title">
+      <string>Add</string>
+     </property>
+     <addaction name="actionInput_Port"/>
+     <addaction name="actionOutput_Port"/>
+     <addaction name="actionNode"/>
+     <addaction name="actionConnection"/>
+     <addaction name="actionText"/>
+    </widget>
+    <addaction name="actionCut"/>
+    <addaction name="actionCopy"/>
+    <addaction name="actionPaste"/>
+    <addaction name="separator"/>
+    <addaction name="actionProperties"/>
+    <addaction name="menuAdd"/>
+    <addaction name="separator"/>
+    <addaction name="actionPreferences"/>
+   </widget>
+   <widget class="QMenu" name="menuSimulation">
+    <property name="title">
+     <string>Simulation</string>
+    </property>
+    <widget class="QMenu" name="menuLanguage">
+     <property name="title">
+      <string>Language</string>
+     </property>
+    </widget>
+    <addaction name="menuLanguage"/>
+    <addaction name="actionNetlist"/>
+    <addaction name="actionNetlist_and_Run"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionManual"/>
+    <addaction name="actionWebsite"/>
+    <addaction name="separator"/>
+    <addaction name="actionabout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuSimulation"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar_File">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew"/>
+   <addaction name="actionOpen"/>
+   <addaction name="actionSave"/>
+   <addaction name="actionPrint"/>
+  </widget>
+  <widget class="QDockWidget" name="LibraryWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QTabWidget" name="LibrarySymbolView">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>common</string>
+        </attribute>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QWidget" name="LibraryTreeView" native="true">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLineEdit" name="LibFilterLineEdit">
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="placeholderText">
+               <string>LibName</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="CellFilterLineEdit">
+              <property name="placeholderText">
+               <string>CellName</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="ViewFilterLineEdit">
+              <property name="placeholderText">
+               <string>ViewName</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTreeView" name="LibTreeView">
+            <property name="autoFillBackground">
+             <bool>true</bool>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="sortingEnabled">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar_Library">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNew_Library"/>
+   <addaction name="actionimport_from_file"/>
+   <addaction name="actiontoggle_layout"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_Editor">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionInput_Port"/>
+   <addaction name="actionOutput_Port"/>
+   <addaction name="actionNode"/>
+   <addaction name="actionConnection"/>
+   <addaction name="actionProperties"/>
+   <addaction name="actionPush_hierachy"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_Simulation">
+   <property name="windowTitle">
+    <string>toolBar_3</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNetlist"/>
+   <addaction name="actionNetlist_and_Run"/>
+  </widget>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/file-plus.svg</normaloff>:/icons/feather/file-plus.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/save.svg</normaloff>:/icons/feather/save.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="text">
+    <string>Save as</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/printer.svg</normaloff>:/icons/feather/printer.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Print</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionPrint_hierarchy">
+   <property name="text">
+    <string>Print hierarchy</string>
+   </property>
+  </action>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/copy.svg</normaloff>:/icons/feather/copy.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actionPaste">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/clipboard.svg</normaloff>:/icons/feather/clipboard.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actionCut">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/scissors.svg</normaloff>:/icons/feather/scissors.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Cut</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionNetlist">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/file-text.svg</normaloff>:/icons/feather/file-text.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Netlist</string>
+   </property>
+  </action>
+  <action name="actionNetlist_and_Run">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/play.svg</normaloff>:/icons/feather/play.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Netlist and Run</string>
+   </property>
+  </action>
+  <action name="actionProperties">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/list.svg</normaloff>:/icons/feather/list.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Properties</string>
+   </property>
+  </action>
+  <action name="actionInput_Port">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/Spyce_Icons/inport.svg</normaloff>:/icons/Spyce_Icons/inport.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Input Port</string>
+   </property>
+  </action>
+  <action name="actionOutput_Port">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/Spyce_Icons/outport.svg</normaloff>:/icons/Spyce_Icons/outport.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Output Port</string>
+   </property>
+  </action>
+  <action name="actionNode">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/Spyce_Icons/node.svg</normaloff>:/icons/Spyce_Icons/node.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Node</string>
+   </property>
+  </action>
+  <action name="actionConnection">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/edit-3.svg</normaloff>:/icons/feather/edit-3.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Connection</string>
+   </property>
+  </action>
+  <action name="actionText">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/type.svg</normaloff>:/icons/feather/type.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Text</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/settings.svg</normaloff>:/icons/feather/settings.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+  </action>
+  <action name="actionManual">
+   <property name="text">
+    <string>Manual</string>
+   </property>
+  </action>
+  <action name="actionWebsite">
+   <property name="text">
+    <string>Website</string>
+   </property>
+  </action>
+  <action name="actionabout">
+   <property name="text">
+    <string>about</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/file.svg</normaloff>:/icons/feather/file.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionNew_Library">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/folder-plus.svg</normaloff>:/icons/feather/folder-plus.svg</iconset>
+   </property>
+   <property name="text">
+    <string>New Library</string>
+   </property>
+   <property name="toolTip">
+    <string>create a new library</string>
+   </property>
+  </action>
+  <action name="actionimport_from_file">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/download.svg</normaloff>:/icons/feather/download.svg</iconset>
+   </property>
+   <property name="text">
+    <string>import_from_file</string>
+   </property>
+   <property name="toolTip">
+    <string>import Myhdl block</string>
+   </property>
+  </action>
+  <action name="actiontoggle_layout">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/layout.svg</normaloff>:/icons/feather/layout.svg</iconset>
+   </property>
+   <property name="text">
+    <string>toggle layout</string>
+   </property>
+   <property name="toolTip">
+    <string>toggle layout (Symbol view/Tree viw)</string>
+   </property>
+  </action>
+  <action name="actionPush_hierachy">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/zap.svg</normaloff>:/icons/feather/zap.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Push hierachy</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="Spyce.qrc"/>
+ </resources>
+ <connections/>
+</ui>
