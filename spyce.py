@@ -15,6 +15,7 @@ from PySide2 import QtCore, QtWidgets
 from PySide2.scripts.pyside_tool import qt_tool_wrapper
 from PySide2.QtWidgets import QMainWindow
 from LibraryViewer import LibraryViewer
+from SchematicViewer import SchematicViewer
 
 Spyce_version = '1.0'
 
@@ -31,20 +32,20 @@ def QtCompile(qt_tool, src, dest):
               os.path.getmtime(src) >  os.path.getmtime(dest):
         print('compiling file {}'.format(src))
     
-    #    from PyQt5 import pyrcc_main
-    #    
-    #    print('compiling resources file')
-    #    pyrcc_main.processResourceFile([QtResource_file], PyResource_file, listFiles=False)
-    pyside_dir = os.path.dirname(PySide2.__file__)
-    exe = os.path.join(pyside_dir, qt_tool)
-
-    cmd = [exe] + ['-g', 'python', '-o', dest, src]
-    proc = Popen(cmd, stderr=PIPE)
-    out, err = proc.communicate()
-    if err:
-        msg = err.decode("utf-8")
-        print("Error: {}\nwhile executing '{}'".format(msg, ' '.join(cmd)))
-        sys.exit()
+        #    from PyQt5 import pyrcc_main
+        #    
+        #    print('compiling resources file')
+        #    pyrcc_main.processResourceFile([QtResource_file], PyResource_file, listFiles=False)
+        pyside_dir = os.path.dirname(PySide2.__file__)
+        exe = os.path.join(pyside_dir, qt_tool)
+    
+        cmd = [exe] + ['-g', 'python', '-o', dest, src]
+        proc = Popen(cmd, stderr=PIPE)
+        out, err = proc.communicate()
+        if err:
+            msg = err.decode("utf-8")
+            print("Error: {}\nwhile executing '{}'".format(msg, ' '.join(cmd)))
+            sys.exit()
 
 
 QtCompile("rcc", "Spyce.qrc", 'Spyce_rc.py')
@@ -72,13 +73,15 @@ class gui_top(QMainWindow, Ui_MainWindow):
         
         self.LibraryViewer = LibraryViewer(self)
         
+        self.SchematicViewer = SchematicViewer(self)
+        
         # =====================================================================
         # connect  actions
         # =====================================================================
         self.actionQuit.triggered.connect(QtWidgets.QApplication.instance().quit)
 
         # SchematicViewer actions
-        # self.actionNew.triggered.connect(             self.SchematicViewer.New)
+        self.actionNew.triggered.connect(             self.SchematicViewer.New)
         # self.actionOpen.triggered.connect(            self.SchematicViewer.Open)
         # self.actionSave.triggered.connect(            self.SchematicViewer.Save)
         # self.actionSave_as.triggered.connect(         self.SchematicViewer.SaveAs)
