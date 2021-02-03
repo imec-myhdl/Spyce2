@@ -5,12 +5,13 @@ Created on Tue Dec 22 16:11:43 2020
 
 @author: jonathan
 """
-from PySide2 import QtCore, QtWidgets
+from Qt import QtCore, QtWidgets
 
 class LibraryViewer(object):
     def __init__(self, gui_top):
         self.tabs = gui_top.LibrarySymbolView
         self.tree = gui_top.LibraryTreeView
+        #self.gui_top.LibraryWidget.setWindowTitle('Library Viewer')
         
         # add Quicksel tab
         self.quickSelTab = QtWidgets.QComboBox()        

@@ -1,10 +1,18 @@
 <RCC>
   <qresource prefix="icons">
+    <file>feather/sliders.svg</file>
+    <file>feather/arrow-up.svg</file>
+    <file>feather/arrow-down.svg</file>
+    <file>feather/plus.svg</file>
+    <file>feather/plus-square.svg</file>
+    <file>feather/x-square.svg</file>
+    <file>feather/mouse-pointer.svg</file>
     <file>feather/check-square.svg</file>
     <file>feather/zap.svg</file>
     <file>feather/layout.svg</file>
     <file>feather/download.svg</file>
     <file>feather/folder-plus.svg</file>
+    <file>feather/cpu.svg</file>
     <file>Spyce_Icons/inport.svg</file>
     <file>Spyce_Icons/node.svg</file>
     <file>Spyce_Icons/outport.svg</file>

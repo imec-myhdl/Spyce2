@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# bak files
+*.bak
+
+# kde
+.directory
+
+#Spyce compiled files
+*_backup.py
+Spyce_rc.py
+Ui/

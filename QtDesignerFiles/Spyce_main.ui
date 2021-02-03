@@ -11,12 +11,53 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Spyce Simple python circuit editor</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Spyce.qrc">
+    <normaloff>:/icons/feather/cpu.svg</normaloff>:/icons/feather/cpu.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>170</red>
+            <green>0</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>170</red>
+            <green>0</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Highlight">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>227</red>
+            <green>229</green>
+            <blue>231</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -44,12 +85,12 @@
      <x>0</x>
      <y>0</y>
      <width>1083</width>
-     <height>21</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>File</string>
+     <string>Fi&amp;le</string>
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
@@ -63,15 +104,14 @@
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>Edit</string>
+     <string>E&amp;dit</string>
     </property>
     <widget class="QMenu" name="menuAdd">
      <property name="title">
-      <string>Add</string>
+      <string>&amp;Add</string>
      </property>
      <addaction name="actionInput_Port"/>
      <addaction name="actionOutput_Port"/>
-     <addaction name="actionNode"/>
      <addaction name="actionConnection"/>
      <addaction name="actionText"/>
     </widget>
@@ -86,11 +126,11 @@
    </widget>
    <widget class="QMenu" name="menuSimulation">
     <property name="title">
-     <string>Simulation</string>
+     <string>Sim&amp;ulation</string>
     </property>
     <widget class="QMenu" name="menuLanguage">
      <property name="title">
-      <string>Language</string>
+      <string>&amp;Language</string>
      </property>
     </widget>
     <addaction name="menuLanguage"/>
@@ -140,8 +180,21 @@
    <property name="enabled">
     <bool>true</bool>
    </property>
+   <property name="windowIcon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/layout.svg</normaloff>:/icons/feather/layout.svg</iconset>
+   </property>
+   <property name="toolTip">
+    <string>Library Viewer. Drag and Drop Items to Schematic viewer</string>
+   </property>
    <property name="autoFillBackground">
-    <bool>true</bool>
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>Library Viewer</string>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -250,10 +303,11 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionNormal"/>
    <addaction name="actionInput_Port"/>
    <addaction name="actionOutput_Port"/>
-   <addaction name="actionNode"/>
    <addaction name="actionConnection"/>
+   <addaction name="actionText"/>
    <addaction name="actionProperties"/>
    <addaction name="actionPush_hierachy"/>
   </widget>
@@ -277,6 +331,9 @@
    </property>
    <property name="text">
     <string>New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
   <action name="actionSave">
@@ -310,7 +367,7 @@
   </action>
   <action name="actionPrint_hierarchy">
    <property name="text">
-    <string>Print hierarchy</string>
+    <string>Print &amp;hierarchy</string>
    </property>
   </action>
   <action name="actionCopy">
@@ -364,7 +421,7 @@
      <normaloff>:/icons/feather/play.svg</normaloff>:/icons/feather/play.svg</iconset>
    </property>
    <property name="text">
-    <string>Netlist and Run</string>
+    <string>Netlist and &amp;Run</string>
    </property>
   </action>
   <action name="actionProperties">
@@ -394,19 +451,10 @@
     <string>Output Port</string>
    </property>
   </action>
-  <action name="actionNode">
-   <property name="icon">
-    <iconset resource="Spyce.qrc">
-     <normaloff>:/icons/Spyce_Icons/node.svg</normaloff>:/icons/Spyce_Icons/node.svg</iconset>
-   </property>
-   <property name="text">
-    <string>Node</string>
-   </property>
-  </action>
   <action name="actionConnection">
    <property name="icon">
     <iconset resource="Spyce.qrc">
-     <normaloff>:/icons/feather/edit-3.svg</normaloff>:/icons/feather/edit-3.svg</iconset>
+     <normaloff>:/icons/Spyce_Icons/node.svg</normaloff>:/icons/Spyce_Icons/node.svg</iconset>
    </property>
    <property name="text">
     <string>Connection</string>
@@ -503,8 +551,26 @@
    <property name="text">
     <string>Quit</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
    <property name="menuRole">
     <enum>QAction::QuitRole</enum>
+   </property>
+  </action>
+  <action name="actionNormal">
+   <property name="icon">
+    <iconset resource="Spyce.qrc">
+     <normaloff>:/icons/feather/mouse-pointer.svg</normaloff>:/icons/feather/mouse-pointer.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Normal</string>
+   </property>
+   <property name="toolTip">
+    <string>Normal Mode</string>
+   </property>
+   <property name="shortcut">
+    <string>Esc</string>
    </property>
   </action>
  </widget>
